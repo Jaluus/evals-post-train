@@ -28,6 +28,7 @@ TEST_BENCHMARKS = {
     "arc_challenge_chat/exact_match",
     "arc_multilingual/acc",
     "gpqa_main_cot_zeroshot/exact_match,ordered-extract",
+    "gpqa_diamond_cot_zeroshot/exact_match,ordered-extract",
     "gsm8k_platinum_cot_zeroshot/exact_match",
     "mlogiqa_gen/exact_match",
 }

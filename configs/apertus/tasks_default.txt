@@ -19,6 +19,7 @@ truthfulqa_multilingual_mc2
 # Math
 # Gated dataset https://huggingface.co/datasets/Idavidrein/gpqa
 gpqa_main_cot_zeroshot
+gpqa_diamond_cot_zeroshot
 gsm8k_cot
 gsm8k_platinum_cot_zeroshot
 hendrycks_math

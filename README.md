@@ -76,7 +76,7 @@ The launcher selects a benchmark suite from its optional first positional argume
 
 | Mode | Task list | Tasks | Description |
 |------|-----------|-------|-------------|
-| `default` | `tasks_default.txt` | 48 | Full Apertus 1.5 post-training suite: knowledge, math, code, reasoning, multilingual, instruction following, bias, cultural knowledge, safety |
+| `default` | `tasks_default.txt` | 49 | Full Apertus 1.5 post-training suite: knowledge, math, code, reasoning, multilingual, instruction following, bias, cultural knowledge, safety |
 | `posttrain` | `tasks_posttrain_final.txt` | 50 | Post-training suite incl. chat/arena (alpaca_eval, arena_hard_v01/v2), AIME, MATH-500, BFCL v3, Swiss AI Charter Alignment, o(r)bench, and system-prompt adherence (RealGuardrails: S-IFEval, TensorTrust, S-RuLES) |
 | `best-of-k` | `tasks_best_of_k.txt` | 7 | Multi-repeat/self-consistency suite for math and code, with mean@k, majority-vote, and pass@k metrics |
 | `gpt` | `tasks_gpt.txt` | 3 | Experimental AlpacaEval and Arena-Hard path for a future OpenAI GPT judge type in the Swiss-AI harness |
@@ -86,6 +86,16 @@ The launcher selects a benchmark suite from its optional first positional argume
 | `eval-debug` | `eval_debug.txt` | 8 | Small mix of loglikelihood + generative tasks to smoke-test the eval pipeline |
 | `custom` | `--task-file` | — | User-specified task file and optional `--table-metrics` file |
 | `single` | `--task` | 1 | One task, user-specified through `--task` (comma-separated tasks allowed) |
+
+The `default` suite includes GPQA Main and GPQA Diamond as separate zero-shot
+chain-of-thought tasks (`gpqa_main_cot_zeroshot` and `gpqa_diamond_cot_zeroshot`).
+Both use the existing harness prompts and generation defaults, and the summary
+table reports `exact_match,ordered-extract` separately for each. Diamond is a
+subset of Main, so these are overlapping evaluations, not independent datasets.
+GPQA requires access to the [gated dataset](https://huggingface.co/datasets/Idavidrein/gpqa).
+Select `default` explicitly; omitting the mode still selects `posttrain`. Historical
+suites are unchanged. This uses the lm-evaluation-harness tasks, not the separate
+Inspect AI GPQA example below.
 
 **OLMo3 suites** (`configs/olmo/`)
 
